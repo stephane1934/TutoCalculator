@@ -17,9 +17,44 @@ namespace TutoCalculator
 {
     public partial class MainWindow : Window
     {
+        double lastNumber,result;
+
         public MainWindow()
         {
             InitializeComponent();
+            acButton.Click += AcButton_Click;
+            negativeButton.Click += NegativeButton_Click;
+            pourcentageButton.Click += PourcentageButton_Click;
+        }
+
+        private void PourcentageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            {
+                lastNumber = lastNumber * -1;
+                resultLabel.Content = lastNumber.ToString();
+                egualButton.Click += EgualButton_Click;
+            }
+        }
+
+        private void EgualButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void NegativeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(resultLabel.Content.ToString(),out lastNumber))
+            {
+                lastNumber = lastNumber /100;
+                resultLabel.Content = lastNumber.ToString();
+            }
+
+        }
+
+        private void AcButton_Click(object sender, RoutedEventArgs e)
+        {
+            resultLabel.Content = "0";
         }
 
         private void septButton_Click(object sender, RoutedEventArgs e)
