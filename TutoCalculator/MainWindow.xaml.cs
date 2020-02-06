@@ -25,6 +25,7 @@ namespace TutoCalculator
             acButton.Click += AcButton_Click;
             negativeButton.Click += NegativeButton_Click;
             pourcentageButton.Click += PourcentageButton_Click;
+            egualButton.Click += EgualButton_Click;
         }
 
         private void PourcentageButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +34,6 @@ namespace TutoCalculator
             {
                 lastNumber = lastNumber * -1;
                 resultLabel.Content = lastNumber.ToString();
-                egualButton.Click += EgualButton_Click;
             }
         }
 
