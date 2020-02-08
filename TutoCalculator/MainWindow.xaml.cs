@@ -31,17 +31,17 @@ namespace TutoCalculator
 
         private void PourcentageButton_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            if (double.TryParse(resultLabel.Content.ToString(), out double tempNumber))
             {
-                lastNumber = lastNumber * -1;
-                resultLabel.Content = lastNumber.ToString();
+                tempNumber = (tempNumber / 100);
+                if (lastNumber != 0) tempNumber *= lastNumber;
+                resultLabel.Content = tempNumber.ToString();
             }
         }
 
         private void EgualButton_Click(object sender, RoutedEventArgs e)
         {
-            double newNumber;
-            if (double.TryParse(resultLabel.Content.ToString(), out newNumber))
+            if (double.TryParse(resultLabel.Content.ToString(), out double newNumber))
             {
                 switch (selectedOperator)
                 {
@@ -75,6 +75,8 @@ namespace TutoCalculator
         private void AcButton_Click(object sender, RoutedEventArgs e)
         {
             resultLabel.Content = "0";
+            lastNumber = 0;
+            result = 0;
         }
 
         private void OperationButton_Click(object sender,RoutedEventArgs e)
