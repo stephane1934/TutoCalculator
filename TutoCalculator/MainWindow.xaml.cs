@@ -92,7 +92,7 @@ namespace TutoCalculator
 
         private void pointButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!resultLabel.Content.ToString().Contains(".")) resultLabel.Content = $"{resultLabel.Content}.";
+            if (!resultLabel.Content.ToString().Contains(",")) resultLabel.Content = $"{resultLabel.Content},";
         }
 
         private void NumberButton_Click(object sender, RoutedEventArgs e)
@@ -141,7 +141,12 @@ namespace TutoCalculator
         }
         public static double Divide(double n1,double n2)
         {
-            return n1 / n2;
+            if(n2 == 0)
+            {
+                MessageBox.Show("Division by zero is Not supported","Wrong operation",MessageBoxButton.OK,MessageBoxImage.Error);
+                return 0;
+            }
+                return n1 / n2;
         }
     }
 }
